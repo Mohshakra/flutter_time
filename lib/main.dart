@@ -4,9 +4,9 @@ import 'package:flutter_time/pages/loading.dart';
 import 'package:flutter_time/pages/choose_location.dart';
 
 void main() => runApp(MaterialApp(
-      home: Home(),
+      initialRoute: '/',
       routes: {
-        '/loading': (context) => Loading(),
+        '/': (context) => Loading(),
         '/home': (context) => Home(),
         '/choose_location': (context) => ChooseLocation(),
       },
