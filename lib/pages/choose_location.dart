@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 
-class ChooseLocationState extends StatefulWidget {
-  const ChooseLocationState({super.key});
+class ChooseLocation extends StatefulWidget {
+  const ChooseLocation({super.key});
 
   @override
-  State<ChooseLocationState> createState() => _ChooseLocationStateState();
+  State<ChooseLocation> createState() => _ChooseLocationState();
 }
 
-class _ChooseLocationStateState extends State<ChooseLocationState> {
+class _ChooseLocationState extends State<ChooseLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text('Choose Location')),
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title: Text("ChooseLocation"),
+        centerTitle: true,
+        elevation: 0,
+      ),
     );
   }
 }

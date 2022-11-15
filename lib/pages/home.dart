@@ -11,7 +11,19 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text('Hello World')),
+      body: SafeArea(
+          child: Column(
+        // Column is a widget that allows us to stack widgets vertically
+        children: <Widget>[
+          TextButton.icon(
+            onPressed: () {
+              Navigator.pushNamed(context, '/choose_location');
+            },
+            icon: Icon(Icons.edit_location_alt_sharp),
+            label: Text("Edit Location"),
+          ),
+        ],
+      )),
     );
   }
 }
