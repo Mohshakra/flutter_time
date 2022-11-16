@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_time/pages/loading.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,8 +9,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Map data = {};
+
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic> data =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+    print(data);
+
     return Scaffold(
       body: SafeArea(
           child: Column(
