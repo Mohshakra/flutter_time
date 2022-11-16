@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
@@ -8,8 +10,14 @@ class WorldTime {
   late String time;
   late String flag;
   late String url;
+  late bool isDayTime;
 
-  WorldTime({required this.location, required this.flag, required this.url});
+  WorldTime(
+      {required this.location,
+      required this.flag,
+      required this.url,
+      required this.isDayTime});
+
   Future<void> getTime() async {
     try {
       print('url is $url');
@@ -26,6 +34,9 @@ class WorldTime {
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset.substring(1, 3))));
       time = DateFormat().add_jm().format(now);
+
+      isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
+
       print(time);
     } catch (e) {
       print('caught error: $e');
