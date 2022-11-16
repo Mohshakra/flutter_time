@@ -9,7 +9,7 @@ class WorldTime {
   late String url;
 
   WorldTime({required this.location, required this.flag, required this.url});
-  void getTime() async {
+  Future<void> getTime() async {
     print('url is $url');
     Response response = await get(Uri.parse(
         'http://worldtimeapi.org/api/timezone/$url')); // make the request
