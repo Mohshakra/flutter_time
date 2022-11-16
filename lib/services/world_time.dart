@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class WorldTime {
   late String location;
@@ -24,7 +25,8 @@ class WorldTime {
       // add offset to datetime
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset.substring(1, 3))));
-      time = now.toString();
+      time = DateFormat().add_jm().format(now);
+      print(time);
     } catch (e) {
       print('caught error: $e');
       time = 'could not get time data';
