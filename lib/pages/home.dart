@@ -50,6 +50,8 @@ class _HomeState extends State<Home> {
                   style: TextStyle(
                     fontSize: 28.0,
                     letterSpacing: 2.0,
+                    // if isDayTime is true, then set color to black, else set color to white
+                    color: data['isDayTime'] ? Colors.black : Colors.white,
                   ),
                 ),
               ],
@@ -61,6 +63,7 @@ class _HomeState extends State<Home> {
               data['time'],
               style: TextStyle(
                 fontSize: 66.0,
+                color: data['isDayTime'] ? Colors.black : Colors.white,
               ),
             ),
           ],
