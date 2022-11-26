@@ -13,8 +13,16 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> data =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+    // update the time property with the value from the newdata object
+
+    // Map data =
+    //     ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+
+    // Update the home screen with time data from the new data object
+    data = data.isNotEmpty
+        ? data
+        : ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+
     print(data);
 
     // set background image
@@ -33,8 +41,17 @@ class _HomeState extends State<Home> {
           // Column is a widget that allows us to stack widgets vertically
           children: <Widget>[
             TextButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/choose_location');
+              onPressed: () async {
+                dynamic result =
+                    await Navigator.pushNamed(context, '/choose_location');
+                setState(() {
+                  data = {
+                    'time': result['time'],
+                    'location': result['location'],
+                    'flag': result['flag'],
+                    'isDayTime': result['isDayTime'],
+                  };
+                });
               },
               icon: Icon(Icons.edit_location_alt_sharp),
               label: Text("Edit Location"),
